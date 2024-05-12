@@ -84,6 +84,8 @@ pid=""
         else
             startup_iterator=1
             restarts=$((restarts + 1))
+            echo "Sleeping another $TIMEOUT seconds until restart"
+            sleep $TIMEOUT
             break # Restart server
         fi
     done
