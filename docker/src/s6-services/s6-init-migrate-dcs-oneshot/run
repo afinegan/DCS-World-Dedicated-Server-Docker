@@ -8,7 +8,7 @@ source /app/dcs_server/logger_function
 # Set up error handling
 handle_error() {
     local exit_code="$?"
-    echo -e "Error occurred (Exit code: $exit_code)" 
+    echo -e "Error occurred (Exit code: $exit_code)"
     exit "$exit_code"
 }
 trap handle_error ERR
