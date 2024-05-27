@@ -21,11 +21,12 @@ services:
       - TIMEOUT=${TIMEOUT:-30}
     ports:
       - '3000:3000/tcp' # Webtop HTTP port - TCP only.
-      - '10308:10308/tcp' # Multiplayer game traffic - TCP.
-      - '10308:10308/udp' # Multiplayer game traffic - UDP.
-      - '10309:10309/tcp' # Multiplayer game VOIP traffic - TCP.
-      - '10309:10309/udp' # Multiplayer game VOIP traffic - UDP.
+      - '10508:10508/tcp' # Multiplayer game traffic - TCP.
+      - '10508:10508/udp' # Multiplayer game traffic - UDP.
+      - '10509:10509/tcp' # Multiplayer game VOIP traffic - TCP.
+      - '10509:10509/udp' # Multiplayer game VOIP traffic - UDP.
     volumes:
+      - '${HOME}/.wine:/config/.wine'
       - '${HOME}/DDCS:/config/DDCS'
       - '/var/run/docker.sock:/var/run/docker.sock'
     security_opt:
@@ -63,7 +64,8 @@ services:
       - HOME=/config
       - PM2_HOME=/config/.pm2
     volumes:
-      - '${HOME}:/app'
+      - '${HOME}/.wine:/config/.wine'
+      - '${HOME}/DDCS:/config/DDCS'
       - '.env.config:/app/DDCS/config/.env'
       - '/var/run/docker.sock:/var/run/docker.sock'
     restart: always
