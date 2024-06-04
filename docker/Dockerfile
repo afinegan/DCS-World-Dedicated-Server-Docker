@@ -11,8 +11,8 @@ RUN apk add --no-cache wine freetype wget cabextract xdotool xdg-utils xvfb xvfb
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod +x winetricks
 RUN mv winetricks /usr/bin
 
-RUN rm -rf /config/.wine && mkdir /config/.wine && chown abc:users -R /config/.wine
-RUN rm -rf /config/.cache && mkdir /config/.cache && chown abc:users -R /config/.cache
+RUN mkdir /config/.wine && chown abc:users -R /config/.wine
+RUN mkdir /config/.cache && chown abc:users -R /config/.cache
 
 COPY ./src/s6-services/s6-init-migrate-dcs-oneshot /etc/s6-overlay/s6-rc.d/init-migrate-dcs-oneshot
 RUN chmod +x -R /etc/s6-overlay/s6-rc.d/init-migrate-dcs-oneshot
